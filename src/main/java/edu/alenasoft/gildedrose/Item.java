@@ -62,6 +62,9 @@ public class Item {
             case "Backstage passes to a TAFKAL80ETC concert":
                 this.itemType = ItemType.VINTAGE;
                 break;
+            case "Conjured Mana Cake":
+                this.itemType = ItemType.CONJURED;
+                break;
             default:
                 this.itemType = ItemType.NORMAL;
         }
