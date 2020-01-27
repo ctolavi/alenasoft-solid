@@ -2,43 +2,73 @@ package edu.alenasoft.gildedrose;
 
 public class Item {
 
-  public String name;
-  public int sellIn;
-  public int quality;
+    private String name;
 
-  public Item(String name, int sellIn, int quality) {
-    this.setName(name);
-    this.setSellIn(sellIn);
-    this.setQuality(quality);
-  }
+    private int sellIn;
 
-  /* Generated getter and setter code */
-  public String getName() {
-    return name;
-  }
+    private int quality;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    private ItemType itemType;
 
-  public int getSellIn() {
-    return sellIn;
-  }
+    public Item(String name, int sellIn, int quality) {
+        this.setName(name);
+        this.setSellIn(sellIn);
+        this.setQuality(quality);
+        classifyOldItems();
+    }
 
-  public void setSellIn(int sellIn) {
-    this.sellIn = sellIn;
-  }
+    public Item(String name, int sellIn, int quality, ItemType itemType) {
+        this.name = name;
+        this.sellIn = sellIn;
+        this.quality = quality;
+        this.itemType = itemType;
+    }
 
-  public int getQuality() {
-    return quality;
-  }
+    /* Generated getter and setter code */
+    public String getName() {
+        return name;
+    }
 
-  public void setQuality(int quality) {
-    this.quality = quality;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  @Override
-  public String toString() {
-    return "Item{" + "name='" + name + '\'' + ", sellIn=" + sellIn + ", quality=" + quality + '}';
-  }
+    public int getSellIn() {
+        return sellIn;
+    }
+
+    public void setSellIn(int sellIn) {
+        this.sellIn = sellIn;
+    }
+
+    public int getQuality() {
+        return quality;
+    }
+
+    public void setQuality(int quality) {
+        this.quality = quality;
+    }
+
+    public ItemType getItemType() {
+        return itemType;
+    }
+
+    private void classifyOldItems() {
+        switch (this.name) {
+            case "Sulfuras, Hand of Ragnaros":
+                this.itemType = ItemType.LEGENDARY;
+                break;
+            case "Aged Brie":
+            case "Backstage passes to a TAFKAL80ETC concert":
+                this.itemType = ItemType.VINTAGE;
+                break;
+            default:
+                this.itemType = ItemType.NORMAL;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" + "name='" + name + '\'' + ", sellIn=" + sellIn + ", quality=" + quality + '}';
+    }
 }
